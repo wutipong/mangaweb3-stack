@@ -2,12 +2,19 @@ services:
   frontend:
     image: wutipong/mangaweb3-frontend:latest
     environment: 
-      BACKEND_URL: http://backend:8080
+      PUBLIC_BACKEND_URL: http://backend:8972/
     
   backend:
     image: wutipong/mangaweb3-backend:latest
+    environment:
+      MANGAWEB_DB: ${POSTGRES_DATABASE}
+      MANGAWEB_DATA_PATH: /data
     volumes:
       - ${DATA_PATH}:/data:ro
+    ports:
+      - "8972:8972"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
     
   caddy:
     image: caddy:alpine
