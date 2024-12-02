@@ -1,0 +1,9 @@
+:80 {
+	handle /api/* {
+		reverse_proxy http://backend:8080
+	}
+
+	handle /* {
+		reverse_proxy http://gallery:3000
+	}
+}

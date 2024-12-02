@@ -1,0 +1,26 @@
+services:
+  frontend:
+    image: wutipong/mangaweb3-frontend:latest
+    environment: 
+      BACKEND_URL: http://backend:8080
+    
+  backend:
+    image: wutipong/mangaweb3-backend:latest
+    volumes:
+      - ${DATA_PATH}:/data:ro
+    
+  caddy:
+    image: caddy:alpine
+    # restart: unless-stopped
+    cap_add:
+      - NET_ADMIN
+    ports:
+      - "${HTTP_PORT}:80"
+    volumes:
+      - ./caddy:/etc/caddy
+      - caddy_data:/data
+      - caddy_config:/config
+
+volumes:
+  caddy_data:
+  caddy_config:
