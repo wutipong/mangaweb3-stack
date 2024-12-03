@@ -2,12 +2,14 @@ services:
   frontend:
     image: wutipong/mangaweb3-frontend:latest
     environment: 
-      PUBLIC_BACKEND_URL: http://backend:8972/
+      BACKEND_URL: http://backend:8972/
+      DEFAULT_SORT_FIELD:
+      DEFAULT_ORDER:
     
   backend:
     image: wutipong/mangaweb3-backend:latest
     environment:
-      MANGAWEB_DB: ${POSTGRES_DATABASE}
+      MANGAWEB_DB:
       MANGAWEB_DATA_PATH: /data
     volumes:
       - ${DATA_PATH}:/data:ro
