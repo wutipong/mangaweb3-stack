@@ -13,8 +13,6 @@ services:
       MANGAWEB_DATA_PATH: /data
     volumes:
       - ${DATA_PATH}:/data:ro
-    ports:
-      - "8972:8972"
     extra_hosts:
       - "host.docker.internal:host-gateway"
     
