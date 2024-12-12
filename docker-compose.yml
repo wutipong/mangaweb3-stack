@@ -9,8 +9,10 @@ services:
     environment:
       MANGAWEB_DB: ${POSTGRES_DATABASE}
       MANGAWEB_DATA_PATH: /data
+      MANGAWEB_CACHE_PATH: /cache
     volumes:
       - ${DATA_PATH}:/data:ro
+      - backend_cache:/cache
     ports:
       - "8972:8972"
     extra_hosts:
@@ -29,5 +31,6 @@ services:
       - caddy_config:/config
 
 volumes:
+  backend_cache:
   caddy_data:
   caddy_config:
