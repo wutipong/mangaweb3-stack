@@ -1,4 +1,4 @@
-# Gallery Docker Compose Stack
+# Mangaweb3 Docker Compose Stack
 
 ## Getting Started
 
